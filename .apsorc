@@ -1,0 +1,91 @@
+{
+  "version": 2,
+  "rootFolder": "src",
+  "apiType": "Rest",
+  "entities": [
+    {
+      "name": "Bookmark",
+      "fields": [
+        {
+          "name": "title",
+          "type": "varchar",
+          "nullable": false
+        },
+        {
+          "name": "url",
+          "type": "varchar",
+          "nullable": false
+        },
+        {
+          "name": "note",
+          "type": "text",
+          "nullable": true
+        },
+        {
+          "name": "slug",
+          "type": "varchar",
+          "isIndex": true,
+          "isUnique": true,
+          "nullable": false
+        },
+        {
+          "name": "status",
+          "type": "enum",
+          "values": [
+            "active",
+            "archived"
+          ],
+          "nullable": false
+        },
+        {
+          "name": "tags",
+          "type": "varchar",
+          "nullable": true
+        }
+      ],
+      "indexes": [
+        {
+          "fields": [
+            "slug"
+          ],
+          "unique": true
+        },
+        {
+          "fields": [
+            "url"
+          ],
+          "unique": true
+        },
+        {
+          "fields": [
+            "status"
+          ],
+          "unique": false
+        },
+        {
+          "fields": [
+            "created_at"
+          ],
+          "unique": false
+        }
+      ],
+      "uniques": [
+        {
+          "name": "unique_bookmark_slug",
+          "fields": [
+            "slug"
+          ]
+        },
+        {
+          "name": "unique_bookmark_url",
+          "fields": [
+            "url"
+          ]
+        }
+      ],
+      "created_at": true,
+      "updated_at": true
+    }
+  ],
+  "relationships": []
+}
